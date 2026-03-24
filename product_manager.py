@@ -32,3 +32,29 @@ class ProductManager:
             del self.products[p_id]
             return True
         return False
+
+# --- Mode d'utilisation simple (Démonstration) ---
+if __name__ == "__main__":
+    print("=== Démarrage de l'application de Gestion de Produits ===")
+    app = ProductManager()
+
+    # 1. Création (Create)
+    print("\n[+] Ajout d'un produit...")
+    produit1 = app.create(101, "Casque Audio", "Casque Bluetooth réducteur de bruit", 199.99, 15)
+    print(f"Produit ajouté : {produit1}")
+
+    # 2. Lecture (Read)
+    print("\n[?] Recherche du produit 101...")
+    recherche = app.read(101)
+    print(f"Résultat : {recherche}")
+
+    # 3. Mise à jour (Update)
+    print("\n[*] Mise à jour du prix et du stock...")
+    app.update(101, prix=179.99, quantite=10)
+    print(f"Produit mis à jour : {app.read(101)}")
+
+    # 4. Suppression (Delete)
+    print("\n[-] Suppression du produit 101...")
+    app.delete(101)
+    print(f"Vérification (doit afficher None) : {app.read(101)}")
+    print("\n=== Fin de la démonstration ===")
