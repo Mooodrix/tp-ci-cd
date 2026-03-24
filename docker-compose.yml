@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  sonarqube:
+    image: sonarqube:lts-community
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_FORCEAUTHENTICATION=false
+    networks:
+      - ci-network
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    user: root
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      # On relie Docker pour que Jenkins puisse lancer des conteneurs
+      - /var/run/docker.sock:/var/run/docker.sock 
+    networks:
+      - ci-network
+
+networks:
+  ci-network:
+
+volumes:
+  jenkins_data:
