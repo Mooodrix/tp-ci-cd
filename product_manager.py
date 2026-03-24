@@ -34,7 +34,7 @@ class ProductManager:
         return False
 
 # --- Mode d'utilisation simple (Démonstration) ---
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     print("=== Démarrage de l'application de Gestion de Produits ===")
     app = ProductManager()
 
